@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<title>gallery</title>
+<style type="text/css">
+
+	header hgroup h1{
+		text-align: center;
+		color: white;
+	}
+	
+	
+	header{
+		width: 100%;
+		height: 150px;
+		line-height: 150px;
+		position: relative;
+		background-color: #1b4554;
+	}
+	
+	#header{
+		padding-bottom: 10px;
+	}
+	
+	
+	
+	
+	#bar{
+		width: 100%;
+		height: 50px;
+		line-height: 50px;
+		background-color: #439fbf;
+		text-align: center;
+		text-decoration: none;
+		margin-bottom: 50px;
+	}
+	
+	a{
+		text-decoration: none;
+		color: white;
+		margin: 100px;
+	}
+
+
+
+
+	#img1{
+	width: 500px;
+	height: 400px;
+	padding: 10px;
+	position: relative;
+	}
+
+</style>
+<script type="text/javascript">
+
+const log = console.log;
+
+window.onload = function() {
+	let img1 = document.querySelector('#img1');
+	img1.src = imgs[0];
+	
+};
+
+let num = 0;
+
+let imgs = [
+	'./img/a0.jpg',
+	'./img/a1.jpg',
+	'./img/a2.jpg',
+	'./img/a3.jpg',
+	'./img/a4.jpg',
+];
+
+function change() {
+	let src = document.querySelector('#img1').src;
+	
+	if(num==imgs.length-1){
+		document.querySelector('#img1').src=imgs[0];
+		num=0;
+	}else{
+		document.querySelector('#img1').src=imgs[++num];
+	}
+	
+}
+
+function change2() {
+	let src = document.querySelector('#img1').src;
+	
+	if(num==0){
+		document.querySelector('#img1').src=imgs[imgs.length-1];
+		num=imgs.length-1;
+	}else{
+		document.querySelector('#img1').src=imgs[--num];
+	}
+	
+}
+
+
+
+
+</script>
+</head>
+<body>
+
+<div id="header">
+   
+     <header>
+       <hgroup>
+		   <h1> <a href="main.html"> main </a></h1>  
+		</hgroup>
+	 </header>	
+	
+</div>
+
+<div id="bar">
+<a href="gallery.html"> GALLERY </a>
+<a href="chart.html"> CHART </a>
+<a href="login.html"> LOGIN </a>
+</div>
+
+<div align="center">
+<button class="btn1" onclick="change()"> ㅡ </button>
+
+<img id="img1" alt="" src="">
+
+<button class="btn2" onclick="change2()"> ㅡ </button>
+</div>
+
+</body>
+</html>

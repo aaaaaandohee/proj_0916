@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<title>users 회원가입</title>
+
+<style type="text/css">
+
+header hgroup h1{
+		text-align: center;
+		color: white;
+	}
+	
+	
+	header{
+		width: 100%;
+		height: 150px;
+		line-height: 150px;
+		position: relative;
+		background-color: #1b4554;
+	}
+	
+	#header{
+		padding-bottom: 10px;
+	}
+	
+	
+	
+	
+	#bar{
+		width: 100%;
+		height: 50px;
+		line-height: 50px;
+		background-color: #439fbf;
+		text-align: center;
+		text-decoration: none;
+		margin-bottom: 50px;
+	}
+	
+	a{
+		text-decoration: none;
+		color: white;
+		margin: 100px;
+	}
+
+.error{
+	color: red;
+}
+
+table{
+	border: 1px solid #1b4554;
+	border-collapse: collapse;
+	height: 200px;
+	width: 300px;
+	margin: 0 auto;
+	
+}
+
+label{
+	text-align: center;
+}
+
+#usertable{
+	width: 500px;
+	height: 350px;
+	border: 2px solid #1b4554;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.btn{
+		border: 2px solid #1b4554;
+		background-color: white;
+		width: 80px;
+		height: 30px;
+		font-weight: bold;
+	}
+	
+#user{
+	color: black;
+	width: 100px;
+	height: 50px;
+	padding: 5px;
+}
+
+</style>
+<script type="text/javascript">
+
+const log = console.log;
+let xdata;
+
+
+
+$(function() {
+	
+	$('#id_check').click(function() {
+		idcheck();
+	});
+	
+});
+
+
+
+function idcheck() {
+	
+	$.ajax({
+		url:'json/id_check.jsp',
+		dataType:'json',
+		data:{
+			id:$('#id').val()
+		},
+		success:function(data){
+			//xdata = data;
+			//alert("success  " + data);
+			if(data.id == undefined){
+				$('#msg').html('사용 가능한 ID입니다.');
+			}else{
+				$('#msg').html('중복된 ID입니다.');
+			}
+		},
+		error:function(e){
+			alert("error  " + e);
+		}
+	});
+}
+
+</script>
+
+</head>
+<body>
+<div id="header">
+   
+     <header>
+       <hgroup>
+		   <h1> <a href="main.html"> main </a></h1>  
+		</hgroup>
+	 </header>	
+	
+</div>
+
+<div id="bar">
+<a href="gallery.html"> GALLERY </a>
+<a href="chart.html"> CHART </a>
+<a href="login.html"> LOGIN </a>
+</div>
+
+<div id="usertable">
+<h3>LOG IN</h3>
+	<form action="json/login.jsp" method="get" onsubmit="return check()">
+	<table border="1">
+		<tr>
+			<td> <label for="id"> ID </label> </td>
+			<td> <input type="text" id="id" name="id" value="" /> </td>
+		</tr>
+		<tr>
+			<td> <label for="pw"> PW </label> </td>
+			<td> <input type="password" id="pw" name="pw" value="" /> </td>
+		</tr>
+		<tr>
+			<td colspan="2"> 
+			<input type="submit" value="로그인" class="btn">
+			<input type="reset" value="취소" class="btn">
+			</td>
+		</tr>
+	</table>
+			<br><a href="user.html" class="btn" id="user">회원가입</a>
+	</form>
+</div>
+
+</body>
+</html>
